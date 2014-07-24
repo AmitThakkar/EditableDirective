@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="editableApp">
+<head>
+    <title>Admin Module</title>
+    <!-- Require AngularJS  India@123 -->
+    <script type="application/javascript" src="./js/angular.min.js"></script>
+    <!-- Require editableDemo JS -->
+    <script type="application/javascript" src="./js/editableDemo.js"></script>
+</head>
+
+<body>
+<ul ng-controller="UserController as userCtrl">
+    <li>
+        <span>Id </span> |
+        <span>Name</span> |
+        <span>Age</span> |
+        <span>Salary</span>
+    </li>
+    <li ng-repeat="user in userCtrl.users track by user._id">
+        <span><span ng-bind="user._id"></span></span> |
+        <span editable="user.name"></span> |
+        <span editable="user.age"></span> |
+        <span editable="user.salary"></span>
+    </li>
+</ul>
+</body>
+</html>

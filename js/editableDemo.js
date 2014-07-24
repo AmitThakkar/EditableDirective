@@ -42,20 +42,21 @@
             restrict: "A",
             templateUrl: "./editableTemplate.html",
             link: function (scope, element) {
+                var oldValue = scope.value;
                 var changeEditStat = function (stat) {
                     scope.$apply(function () {
                         scope.edit = stat;
                     });
-                    if (!stat && scope.value) {
-                        alert("Sending Request")
+                    if (!stat && scope.value !== oldValue) {
+                        console.log("Send Request if you want to update on server.");
                     }
                 };
-                element.bind("click", function () {
+                element.on("click", function () {
                     var inputElement = element[0].children[1];
                     changeEditStat(true);
                     inputElement.focus();
                 });
-                element.bind("keydown", function (event) {
+                element.on("keydown", function (event) {
                     if (event.keyCode === 13 || event.keyCode === 9) {
                         changeEditStat(false);
                     }

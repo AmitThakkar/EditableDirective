@@ -51,13 +51,16 @@
                         console.log("Send Request if you want to update on server.");
                     }
                 };
+                var inputElement = element.find("input")[0];
                 element.on("click", function () {
-                    var inputElement = element[0].children[1];
                     changeEditStat(true);
                     inputElement.focus();
                 });
+                angular.element(inputElement).on("blur", function() {
+                    changeEditStat(false);
+                });
                 element.on("keydown", function (event) {
-                    if (event.keyCode === 13 || event.keyCode === 9) {
+                    if (event.keyCode === 13) {
                         changeEditStat(false);
                     }
                 });

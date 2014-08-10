@@ -1,9 +1,9 @@
 Editable-Directive
 ==================
 
-This repository for containing the generic **directive** to make a text **inline editable**.
+This is repository for containing the generic **directive** to make a text **inline editable**.
 
-**A very common use case**: We want to make some text **editable**. By word **editable**, I mean, when we click on that text, a input field should appear with that text, where we can update value of that text, and after updating that text new value should also reflect into **scope** and database(via send a ajax request to server with new value). So for this, I have written a small **directive**. Lets first try to use this **editable directive**, then we will understand how this **directive** is actually working.
+**A very common use case**: We want to make some text **editable**. By word **editable**, I mean, when we click on that text, an input field should appear with that text, where we can update value of that text, and after updating that text new value should also reflect into **scope** and database(by sending ajax request to server with new value). So for this, I have written a small **directive**. Lets first try to use this **editable directive**, then we will understand how this **directive** is actually working.
 
 **editable.html**
 ```html
@@ -62,7 +62,7 @@ This repository for containing the generic **directive** to make a text **inline
         }
     ];
 
-    /*	
+    /*
      * Defining editable Module.
      * */
     var editableApp = angular.module('editableApp', []);
@@ -88,7 +88,7 @@ This repository for containing the generic **directive** to make a text **inline
                         scope.edit = stat;
                     });
                     if (!stat && scope.value !== oldValue) {
-                        console.log("Send Request if you want to update on server.");
+                        console.log("Send request if you want to update on server.");
                     }
                 };
                 var inputElement = element.find("input")[0];
@@ -121,7 +121,7 @@ We are using **editable directive** for making name, age and salary **editable**
 <span editable="user.name"></span>
 ```
 
-That's it, after marking name field with **editable directive**, if we click on name text then it will hide name text and will show a text field with name text where we can update name and after updating the name it will also reflect into scope, and we can also send ajax request for real time update(to update database).
+That's it, after marking name field with **editable directive**, if we click on name, then it will hide name and will show a text field with text name where we can update name and after updating the name it will also reflect into scope, and we can also send ajax request for real time update(to update database).
 
 Lets understand how **editable directive** is actually working?
 
@@ -161,6 +161,6 @@ editableApp.directive("editable", function () {
 });
 ```
 
-We can see **editable directive** is having **[isolated scope](http://codechutney.in/blog/angularjs/scope-in-angularjs/)** and we are assigning text into property value via **[== notation symbol](http://codechutney.in/blog/angularjs/notation-symbols-in-isolated-scope/)**. So **two-way-binding** will happen between property value of **isolated scope** and the property of parent scope which is passed with **editable directive**. We are making **directive** [restrict](http://codechutney.in/blog/angularjs/component-in-angularjs/) to 'A' so can be use as attribute only. And we are providing html with [templateUrl](http://codechutney.in/blog/angularjs/component-in-angularjs/), which contains the html which will inserted into marked element/node. And with the help **link** property we are attaching **editable** behavior to that node/element.
+We can see **editable directive** is having **[isolated scope](http://codechutney.in/blog/angularjs/scope-in-angularjs/)** and we are assigning text into property value via **[== notation symbol](http://codechutney.in/blog/angularjs/notation-symbols-in-isolated-scope/)**. So **two-way-binding** will happen between property value of **isolated scope** and the property of parent scope which is passed with **editable directive**. We are making **directive** [restrict](http://codechutney.in/blog/angularjs/component-in-angularjs/) to 'A', so it can be used as attribute only. And we are providing html with [templateUrl](http://codechutney.in/blog/angularjs/component-in-angularjs/), which contains the html which will be inserted into marked element/node. And with the help **link** property we are attaching **editable** behavior to that node/element.
 
 **Note**: You can checkout full working source code from this [link](https://github.com/AmitThakkar/EditableDirective)
